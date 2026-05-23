@@ -19,10 +19,13 @@ def decode_review(encoded_review):
 # Function to preprocess user input
 def preprocess_text(text):
     words = text.lower().split()
-    encoded_review = [word_index.get(word, 2) + 3 for word in words]
+    encoded_review = []
+    for word in words:
+        idx = word_index.get(word, 2)
+        # 2 = unknown, 1 = start, 0 = padding - he reserved ahet
+        encoded_review.append(idx + 3)
     padded_review = sequence.pad_sequences([encoded_review], maxlen=500)
     return padded_review
-
 
 import streamlit as st
 ## streamlit app
@@ -34,16 +37,18 @@ st.write('Enter a movie review to classify it as positive or negative.')
 user_input = st.text_area('Movie Review')
 
 if st.button('Classify'):
-
-    preprocessed_input=preprocess_text(user_input)
-
-    ## MAke prediction
-    prediction=model.predict(preprocessed_input)
-    sentiment='Positive' if prediction[0][0] > 0.5 else 'Negative'
-
-    # Display the result
+    preprocessed_input = preprocess_text(user_input)
+    prediction = model.predict(preprocessed_input)
+    score = prediction[0][0]
+    
+    
+    if score >= 0.6:
+        sentiment = '😊 Positive'
+    elif score <= 0.4:
+        sentiment = '😞 Negative'
+    else:
+        sentiment = '😐 Neutral (uncertain)'
+    
     st.write(f'Sentiment: {sentiment}')
-    st.write(f'Prediction Score: {prediction[0][0]}')
-else:
-    st.write('Please enter a movie review.')
-
+    st.write(f'Score: {score:.4f}')
+    st.progress(float(score))
