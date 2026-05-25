@@ -157,7 +157,7 @@ rnn-imdb-sentiment/
 - How RNN hidden state passes information forward
 - Embedding layers — converting words to dense vectors
 - Vanishing gradient problem in simple RNNs
-- Why LSTM/GRU were invented (next project!)
+- Why LSTM/GRU were inv*ented (next project!)
 
 ---
 
@@ -165,10 +165,8 @@ rnn-imdb-sentiment/
 
 **Himanshu Bendale**
 - 🎓 B.E. AI & DS — Mumbai University
-- 🎓 B.S. Electronic Systems — IIT Madras
-- 🔗 [GitHub](https://github.com/yourusername)
-- 💼 [LinkedIn](https://linkedin.com/in/yourprofile)
-
+- 🔗 [GitHub](https://github.com/https://github.com/HIMANSHU-heist)
+- 💼 [LinkedIn](https://www.linkedin.com/in/himanshu-s-bendale-a695aa364?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 ---
 
 ## 🗺️ Roadmap
